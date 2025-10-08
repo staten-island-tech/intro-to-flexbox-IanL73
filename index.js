@@ -68,7 +68,65 @@ const products = [
     {
         title: "A Second Perfectly Generic Object",
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
-        desc: "",
+        desc: "Still perfectly generic, and still perfecty useless.",
         price:12
     }
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price: 13
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:14
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:15
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:16
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:17
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:18
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:19
+    },
+    {
+        title: "",
+        image: "",
+        desc: "",
+        price:20
+    },
 ]
+
+document.querySelector(".shop").insertAdjacentHTML(
+    <div class="item">
+            <img class="item-image" src="" alt="A completely nondescript cube. Again.">
+            <h2 class="item-name">A Second Perfectly Generic Object</h2>
+            <h3 class="item-description">Still perfectly generic, and still perfectly useless.</h3>
+            <h4 class="item-price">12$</h4>
+            <button class="item-buy">purchase</button>
+    </div>
+);
