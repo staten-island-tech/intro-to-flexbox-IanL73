@@ -1,3 +1,4 @@
+// Product object
 const products = [
     {
         title: "Perfectly Generic Object",
@@ -70,63 +71,71 @@ const products = [
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
         desc: "Still perfectly generic, and still perfecty useless.",
         price:12
-    }
+    },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price: 13
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:14
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:15
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:16
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:17
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:18
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:19
     },
     {
-        title: "",
-        image: "",
-        desc: "",
+        title: "cube",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cube_with_Blender.svg/2048px-Cube_with_Blender.svg.png",
+        desc: "blah blah blah blah blah blah blah blah",
         price:20
     },
 ]
 
-document.querySelector(".shop").insertAdjacentHTML(
-    <div class="item">
-            <img class="item-image" src="" alt="A completely nondescript cube. Again.">
-            <h2 class="item-name">A Second Perfectly Generic Object</h2>
-            <h3 class="item-description">Still perfectly generic, and still perfectly useless.</h3>
-            <h4 class="item-price">12$</h4>
+// Inject Functon
+function inject(product){
+    //query the html where we inject the card
+    const container = document.querySelector(".shop");
+    container.insertAdjacentHTML(
+        "afterbegin",
+        `<div class="item">
+            <img class="item-image" src="${product.image}">
+            <h2 class="item-name">${product.title}</h2>
+            <h3 class="item-description">${product.desc}</h3>
+            <h4 class="item-price">${product.price}$</h4>
             <button class="item-buy">purchase</button>
-    </div>
-);
+        </div>`
+    );
+}
+// Apply Inject Function for each product in object
+products.forEach((product)=> inject(product));
