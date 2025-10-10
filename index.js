@@ -122,6 +122,10 @@ const products = [
     },
 ]
 
+const cart = [
+
+]
+
 // Inject Functon
 function inject(product){
     //query the html where we inject the card
@@ -133,9 +137,50 @@ function inject(product){
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
             <h4 class="item-price">${product.price}$</h4>
-            <button class="item-buy">purchase</button>
+            <button class="item-buy">add to cart</button>
         </div>`
     );
 }
+
 // Apply Inject Function for each product in object
 products.forEach((product)=> inject(product));
+
+function getCards(){
+    const buttons = document.querySelectorAll("button");
+    // we don't really need this right now
+    const btnArr = Array.from(buttons);
+    btnArr.forEach((buy) =>
+        buy.addEventListener("click", function(event) {
+            //console.log(event.target);
+            console.log(
+                event.target.closest(".item").getAttribute("item-name"),
+            );
+        })
+    );
+}
+getCards();
+//make array (Done!)
+//put cards on screen with JS (Done!)
+//make a cart (HTML, JS)
+//add to cart to button
+
+
+
+/*
+_________
+|       |    |
+|       |    |
+|       |    |
+|       |    |
+|       |    |
+|       |____|
+|       
+|        ____
+|       |    |       |
+|       |    |       |
+|       |    |       |
+|       |    |       |
+|       |    |       |
+|       |    |       |
+|       |    |       |
+_________    _________
