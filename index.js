@@ -145,16 +145,21 @@ function inject(product){
 // Apply Inject Function for each product in object
 products.forEach((product)=> inject(product));
 
-function getCards(){
+function getCards(product){
     const buttons = document.querySelectorAll("button");
     // we don't really need this right now
     const btnArr = Array.from(buttons);
     btnArr.forEach((buy) =>
         buy.addEventListener("click", function(event) {
-            //console.log(event.target);
-            console.log(
-                event.target.closest(".item").getAttribute("item-name"),
-            );
+            const container = document.querySelector(".cart");
+            container.insertAdjacentHTML(
+                "afterbegin",
+                `<div class = "incart">
+                    <img class="item-image" src="${product.image}">
+                    <h2 class="item-name">${product.title}</h2>
+                    <h4 class="item-price">${product.price}$</h4>
+                </div>`
+            )
         })
     );
 }
@@ -163,24 +168,3 @@ getCards();
 //put cards on screen with JS (Done!)
 //make a cart (HTML, JS)
 //add to cart to button
-
-
-
-/*
-_________
-|       |    |
-|       |    |
-|       |    |
-|       |    |
-|       |    |
-|       |____|
-|       
-|        ____
-|       |    |       |
-|       |    |       |
-|       |    |       |
-|       |    |       |
-|       |    |       |
-|       |    |       |
-|       |    |       |
-_________    _________
