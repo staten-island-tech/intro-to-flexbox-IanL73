@@ -126,14 +126,14 @@ const cart = [
 
 ]
 
-// Inject Functon
+// Inject Function
 function inject(product){
     //query the html where we inject the card
     const container = document.querySelector(".shop");
     container.insertAdjacentHTML(
         "afterbegin",
-        `<div class="item">
-            <img class="item-image" src="${product.image}">
+        `<div class="item" data-title="${product.title}">
+            <img class="item-image" src="${product.image}" />
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
             <h4 class="item-price">${product.price}$</h4>
@@ -145,20 +145,12 @@ function inject(product){
 // Apply Inject Function for each product in object
 products.forEach((product)=> inject(product));
 
-function getCards(product){
-    const buttons = document.querySelectorAll("button");
-    // we don't really need this right now
-    const btnArr = Array.from(buttons);
-    btnArr.forEach((buy) =>
+function getCards(){
+    const buttons = document.querySelectorAll(".item-buy");
+    buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
-            const container = document.querySelector(".cart");
-            container.insertAdjacentHTML(
-                "afterbegin",
-                `<div class = "incart">
-                    <img class="item-image" src="${product.image}">
-                    <h2 class="item-name">${product.title}</h2>
-                    <h4 class="item-price">${product.price}$</h4>
-                </div>`
+            console.log(
+                event.target.closest(".item").getAttribute("data-title")
             )
         })
     );
