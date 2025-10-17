@@ -145,12 +145,18 @@ function inject(product){
 // Apply Inject Function for each product in object
 products.forEach((product)=> inject(product));
 
-function getCards(){
+function getCards(product){
     const buttons = document.querySelectorAll(".item-buy");
     buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
-            console.log(
-                event.target.closest(".item").getAttribute("data-title")
+            console.log(event.target.closest(".item").getAttribute("data-title"));
+            const container = document.querySelector(".cart");
+            container.insertAdjacentHTML(
+                "afterbegin",
+                `<div class="bought" data-title="${product.title}">
+                    <h2 class="item-name">${product.title}</h2>
+                    <h4 class="item-price">${product.price}$</h4>
+                </div>`
             )
         })
     );
