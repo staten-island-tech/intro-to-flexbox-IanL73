@@ -153,7 +153,7 @@ function getCards(product){
             const container = document.querySelector(".cart");
             container.insertAdjacentHTML(
                 "afterbegin",
-                `<div class="bought" data-title="${product.title}">
+                `<div class="bought">
                     <h2 class="item-name">${product.title}</h2>
                     <h4 class="item-price">${product.price}$</h4>
                 </div>`
@@ -161,7 +161,7 @@ function getCards(product){
         })
     );
 }
-getCards();
+getCards(target.closest(".item"));
 //make array (Done!)
 //put cards on screen with JS (Done!)
 //make a cart (HTML, JS)
