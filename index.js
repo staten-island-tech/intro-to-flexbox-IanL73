@@ -19,7 +19,7 @@ const products = [
         price: 3
     },
     {
-        title: "Mimiature Jungle Gym",
+        title: "Miniature Jungle Gym",
         image: "https://cdn.renderhub.com/mranycad/wireframe-icosahedron/wireframe-icosahedron-01.jpg",
         desc: "You probably shouldn't use THIS for your D&D games...",
         price: 4
@@ -122,9 +122,6 @@ const products = [
     },
 ]
 
-const cart = [
-
-]
 
 // Inject Function
 function inject(product){
@@ -132,8 +129,8 @@ function inject(product){
     const container = document.querySelector(".shop");
     container.insertAdjacentHTML(
         "afterbegin",
-        `<div class="item" data-title="${product.title}">
-            <img class="item-image" src="${product.image}" />
+        `<div class="item" data-title="${product.title}" price="${product.price}>
+            <img class="item-image" src="${product.image}"/>
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
             <h4 class="item-price">${product.price}$</h4>
@@ -141,28 +138,25 @@ function inject(product){
         </div>`
     );
 }
-
 // Apply Inject Function for each product in object
 products.forEach((product)=> inject(product));
 
-function getCards(product){
+
+function getCards(){
     const buttons = document.querySelectorAll(".item-buy");
     buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
-            console.log(event.target.closest(".item").getAttribute("data-title"));
+            let name = event.target.closest(".item").getAttribute("data-title");
+            const item = products.find((bees)=> bees.title === name)
             const container = document.querySelector(".cart");
             container.insertAdjacentHTML(
                 "afterbegin",
                 `<div class="bought">
-                    <h2 class="item-name">${product.title}</h2>
-                    <h4 class="item-price">${product.price}$</h4>
+                    <h2 class="item-name">${name}</h2>
+                    <h4 class="item-price">${item.price}$</h4>
                 </div>`
             )
         })
     );
 }
-getCards(target.closest(".item"));
-//make array (Done!)
-//put cards on screen with JS (Done!)
-//make a cart (HTML, JS)
-//add to cart to button
+getCards();
