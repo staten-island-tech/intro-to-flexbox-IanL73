@@ -129,7 +129,7 @@ function inject(product){
     const container = document.querySelector(".shop");
     container.insertAdjacentHTML(
         "afterbegin",
-        `<div class="item" data-title="${product.title}" price="${product.price}>
+        `<div class="item" data-title="${product.title}" price="${product.price}">
             <img class="item-image" src="${product.image}"/>
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
@@ -150,10 +150,10 @@ function getCards(){
             const item = products.find((bees)=> bees.title === name)
             const container = document.querySelector(".cart");
             container.insertAdjacentHTML(
-                "afterbegin",
+                "beforeend",
                 `<div class="bought">
-                    <h2 class="item-name">${name}</h2>
-                    <h4 class="item-price">${item.price}$</h4>
+                    <h2 class="bought-item">${name} - ${item.price}$</h2>
+                    <img class="bought-image" src="${item.image}"/>
                 </div>`
             )
         })
