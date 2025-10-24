@@ -49,6 +49,10 @@ body {
     font-size: x-large
 }
 
+.item-class {
+    font-size:medium
+}
+
 .cart {
     border: 10px solid cornsilk;
     background-color:orange;
