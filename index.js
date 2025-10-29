@@ -149,7 +149,7 @@ function inject(product){
     const container = document.querySelector(".shop");
     container.insertAdjacentHTML(
         "beforeend",
-        `<div class="item" data-title="${product.title}" price="${product.price}">
+        `<div class="item" data-title="${product.title}" price="${product.price}" id="$>
             <img class="item-image" src="${product.image}"/>
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
@@ -160,12 +160,11 @@ function inject(product){
     );
 }
 // Apply Inject Function for each product in object
-function filter(){
+/* function filter(){
     const filters = document.querySelectorAll(".filter");
     console.log(filters)
     filters.forEach((filter) =>
         filter.addEventListener("click", function(event) {
-            shop.innerHTML = ""
             let criteria = event.target.closest(".filter").textContent
             console.log(criteria)
             let filteredproducts = products.filter((product) => product.class === criteria)
@@ -173,15 +172,18 @@ function filter(){
         })
     );
 }
-filter();
+filter(); */
+products.forEach((product) => inject(product))
 
 
 function getCards(){
     const buttons = document.querySelectorAll(".item-buy");
     buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
-            let name = event.target.closest(".item").getAttribute("data-title");
-            const item = products.find((bees)=> bees.title === name)
+            let price = event.target.closest(".item").getAttribute("price");
+            console.log(price)
+            const item = products.find((product)=> product.title === name)
+            console.log(item)
             const container = document.querySelector(".cart");
             container.insertAdjacentHTML(
                 "beforeend",
