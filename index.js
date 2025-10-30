@@ -149,22 +149,24 @@ function inject(product){
     const container = document.querySelector(".shop");
     container.insertAdjacentHTML(
         "beforeend",
-        `<div class="item" data-title="${product.title}" price="${product.price}" id="$>
+        `<div class="item" data-title="${product.title}" price=${product.price}>
+            <h4 class="item-class">${product.class}</h4>
             <img class="item-image" src="${product.image}"/>
             <h2 class="item-name">${product.title}</h2>
             <h3 class="item-description">${product.desc}</h3>
             <h4 class="item-price">${product.price}$</h4>
-            <h4 class="item-class">${product.class}</h4>
             <button class="item-buy">add to cart</button>
         </div>`
     );
 }
 // Apply Inject Function for each product in object
-/* function filter(){
+function filter(){
     const filters = document.querySelectorAll(".filter");
+    const shop = document.querySelectorAll(".shop");
     console.log(filters)
     filters.forEach((filter) =>
         filter.addEventListener("click", function(event) {
+            shop.innerHTML = ""
             let criteria = event.target.closest(".filter").textContent
             console.log(criteria)
             let filteredproducts = products.filter((product) => product.class === criteria)
@@ -172,23 +174,23 @@ function inject(product){
         })
     );
 }
-filter(); */
-products.forEach((product) => inject(product))
-
+filter();
 
 function getCards(){
     const buttons = document.querySelectorAll(".item-buy");
     buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
-            let price = event.target.closest(".item").getAttribute("price");
+            let price = Number(event.target.closest(".item").getAttribute("price"));
             console.log(price)
-            const item = products.find((product)=> product.title === name)
+            console.log(price + 1)
+            const item = products.find((product)=> product.price === price)
             console.log(item)
-            const container = document.querySelector(".cart");
+            const container = document.querySelectorAll(".cart");
+            console.log(container)
             container.insertAdjacentHTML(
                 "beforeend",
                 `<div class="bought">
-                    <h2 class="bought-item">${name} - ${item.price}$</h2>
+                    <h2 class="bought-item">${item.title} - ${item.price}$</h2>
                     <img class="bought-image" src="${item.image}"/>
                 </div>`
             )
