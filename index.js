@@ -142,7 +142,7 @@ const products = [
     },
 ]
 
-
+products.forEach((product)=>inject(product))
 // Inject Function
 function inject(product){
     //query the html where we inject the card
@@ -162,30 +162,34 @@ function inject(product){
 // Apply Inject Function for each product in object
 function filter(){
     const filters = document.querySelectorAll(".filter");
-    const shop = document.querySelectorAll(".shop");
+    const shop = document.querySelector(".shop");
     console.log(filters)
     filters.forEach((filter) =>
         filter.addEventListener("click", function(event) {
+            console.log(shop)
             shop.innerHTML = ""
             let criteria = event.target.closest(".filter").textContent
             console.log(criteria)
             let filteredproducts = products.filter((product) => product.class === criteria)
             filteredproducts.forEach((filteredproduct)=> inject(filteredproduct))
+            purchase()  
         })
     );
 }
 filter();
 
-function getCards(){
+function purchase(){
     const buttons = document.querySelectorAll(".item-buy");
+    console.log(`here are the buttons ${JSON.stringify(buttons)}`)
     buttons.forEach((buy) =>    
         buy.addEventListener("click", function(event) {
+            console.log("Button clicked!!")
             let price = Number(event.target.closest(".item").getAttribute("price"));
             console.log(price)
             console.log(price + 1)
             const item = products.find((product)=> product.price === price)
             console.log(item)
-            const container = document.querySelectorAll(".cart");
+            const container = document.querySelector(".cart");
             console.log(container)
             container.insertAdjacentHTML(
                 "beforeend",
@@ -196,5 +200,15 @@ function getCards(){
             )
         })
     );
+};
+
+function allProduct(){
+    const allButton = document.querySelector(".All")
+    const shop = document.querySelector(".shop")
+    allButton.addEventListener("click", function(event) {
+        shop.innerHTML = ""
+        products.forEach((product)=>inject(product))
+        purchase()
+    })
 }
-getCards();
+allProduct()
